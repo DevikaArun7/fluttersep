@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:fluttersep/Home.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -7,7 +10,20 @@ void main() {
   ));
 }
 
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
+  @override
+  State<Splash> createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 5),() {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context)=>Homepage() ));
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,15 +38,16 @@ class Splash extends StatelessWidget {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children:const [
               Image(
-                  image: AssetImage("assets/images/location.png"),
-                  height: 100,width: 100),
-              //Image.asset("assets/images/location.png"),
-              Text(
-                'SAMPLE APP',
-                style: TextStyle(color: Colors.orangeAccent, fontSize: 30),
-              ),
+              image:AssetImage("assets/images/location.png"),
+                  height: 200,
+                  width: 100,
+          ),
+                Text(
+                'MYAPP',
+                    style: TextStyle(fontSize: 40,color: Colors.orange)),
+
             ],
           ),
         ),
